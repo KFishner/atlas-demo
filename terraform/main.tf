@@ -19,7 +19,7 @@ resource "aws_instance" "consul" {
     ami = "${atlas_artifact.consul.metadata_full.region-us-east-1}"
     key_name = "kfishner"
 
-    count = "3"
+    count = "${var.consul_count}"
 }
 
 resource "aws_instance" "masscan" {
@@ -27,7 +27,7 @@ resource "aws_instance" "masscan" {
     ami = "${atlas_artifact.masscan.metadata_full.region-us-east-1}"
     key_name = "kfishner"
 
-    count = "3"
+    count = "${var.masscan_count}"
 }
 
 resource "aws_elb" "web" {
